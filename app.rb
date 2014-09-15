@@ -2,7 +2,12 @@ require_relative 'config/environment'
 
 class App < Sinatra::Base
   configure do
+<<<<<<< HEAD
     enable :sessions unless test?
+=======
+    enable :sessions
+    use RackSessionAccess if environment == :test
+>>>>>>> updated app controller logic
     set :session_secret, "secret"
   end
 
@@ -19,7 +24,12 @@ class App < Sinatra::Base
   end
 
   get '/set' do
+<<<<<<< HEAD
     # Implement your solution here!
+=======
+    # Set session[:foo] here!
+    session[:foo] = 'hello'
+>>>>>>> updated app controller logic
 
     if session[:foo] == 'hello'
       "Session value set. It's currently set to #{session[:foo]}"
@@ -30,15 +40,16 @@ class App < Sinatra::Base
   end
 
   get '/fetch' do
-    "session[:foo] value: #{session[:foo]}. Let's navigate to the next exercise at '/second_exercise'."
+    "session[:foo] value: #{session[:foo]}."
   end
 
-  get '/second_exercise' do
-    "Your second exercise will be to set your session id key-value pair. The methodology is very similar to the first exercise. When you navigate to the '/set_session' path, it should set session[:id] equal to 1."
+  get '/second_lesson' do
+    "Your second lesson will be to set your session id key-value pair. When you navigate to the '/set_session' path, it should set session[:id] equal to 1."
   end
 
   get '/set_session' do
-    # Implement your solution here!	
+    # Set session[:id] here!
+    session[:id] = 1
 
     if session[:id] == 1
       "Session ID set. It's currently set to #{session[:id]}."
