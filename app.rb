@@ -2,7 +2,7 @@ require_relative 'config/environment'
 
 class App < Sinatra::Base
   configure do
-    enable :sessions
+    enable :sessions unless test?
     set :session_secret, "secret"
   end
 
@@ -11,17 +11,17 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    "Welcome to Sinatra Sessions! In this lab, we will be learning about the general principles behind a sessions cookie. In order to proceed, let's go to the '/first_lesson' path."
+    "Welcome to Sinatra Sessions! In this lab, we will be learning about the general principles behind a sessions cookie. In order to proceed, let's go to the '/first_exercise' path."
   end
 
-  get '/first_lesson' do
-    "Your first lesson will be to set your session key-value pair. When you navigate to the '/set' path, it should set session[:foo] equal to 'hello'."
+  get '/first_exercise' do
+    "Your first exercise will be to set your session key-value pair. You should be able to set the session key-value pair somewhere in the app.rb file, which is currently acting as our controller. When you navigate to the '/set' path, it should set session[:foo] equal to 'hello'."
   end
 
   get '/set' do
-    # Set session[:foo] here!
+    # Implement your solution here!
 
-    if session[:foo]
+    if session[:foo] == 'hello'
       "Session value set. It's currently set to #{session[:foo]}"
       redirect '/fetch'
     else
@@ -29,14 +29,18 @@ class App < Sinatra::Base
     end
   end
 
-  get '/seccond_lesson' do
-    "Your second lesson will be to set your session id key-value pair. When you navigate to the '/set_session' path, it should set session[:id] equal to 1."
+  get '/fetch' do
+    "session[:foo] value: #{session[:foo]}. Let's navigate to the next exercise at '/second_exercise'."
+  end
+
+  get '/second_exercise' do
+    "Your second exercise will be to set your session id key-value pair. The methodology is very similar to the first exercise. When you navigate to the '/set_session' path, it should set session[:id] equal to 1."
   end
 
   get '/set_session' do
-    # Set session[:id] here!
+    # Implement your solution here!	
 
-    if session[:id]
+    if session[:id] == 1
       "Session ID set. It's currently set to #{session[:id]}."
       redirect '/fetch_session_id'
     else
@@ -44,12 +48,8 @@ class App < Sinatra::Base
     end
   end
 
-  get '/fetch' do
-    "Session value: #{session[:foo]}."
-  end
-
-  get '/fetch_session_id'
-    "Session ID: #{session[:id]}."
+  get '/fetch_session_id' do
+    "session[:id] value: #{session[:id]}."
   end
 
   get '/logout' do
@@ -58,6 +58,6 @@ class App < Sinatra::Base
   end
 
   get '/finish' do
-    "Hopefully that explains a little more about the concept of sessions. Sessions is simply a way to store user data on a temporary basis."
+    "Hopefully that explains a little more about the concept of sessions. The session cookie is simply a way to store user data on a temporary basis. In any web application, a user ID is typically used as a session ID. This is because an ID attribute of a user is a unique identifier that will always be distinguishable from other user ID attributes."
   end
 end
