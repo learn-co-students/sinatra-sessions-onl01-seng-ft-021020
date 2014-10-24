@@ -43,4 +43,4 @@ In our first exercise, we will navigate to the `/first_exercise` path. Please fo
 In our second exercise, we will navigate to the `/second_exercise` path. As in the previous lesson, be sure to run `rspec` before implementing each step. Make each test pass before proceeding to the next step.
 
 ### Resources
-- [Cookie-based sessions in Sinatra](http://rubylearning.com/blog/2009/09/30/cookie-based-sessions-in-sinatra/)
+- [Primer on Cookie-Based Sessions](http://www.allaboutcookies.org/cookies/session-cookies-used-for.html)
