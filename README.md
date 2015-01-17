@@ -3,7 +3,6 @@ tags: sinatra, sessions
 languages: ruby
 resources: 1
 ---
-Here is a change I am adding.
 
 # Sinatra Sessions
 
