@@ -22,7 +22,7 @@ So how does a web application maintain state for a user? It can do this via `coo
 
 ### Introduction to the Lab
 
-This is a simple lab that will go through the basic implementation of a session in Sinatra. Be sure to read the <a href="spec/sinatra_sessions_spec.rb">specs</a> to see what's required of each step.
+This is a simple lab that will go through the basic implementation of a session in Sinatra. Be sure to read the specs to see what's required of each step.
 
 ### First Exercise
 
