@@ -12,7 +12,7 @@ Today we're going to be learning all about sessions and how they work!
 - Clone this repository down to your local directory.
 - Type in `bundle install` in your terminal
 - Follow along in the `README`
-- As you go through each exercise, type in `rspec` to ensure that your tests pass
+- As you go through each exercise, type in `learn` to ensure that your tests pass
 
 ### Introduction to Sessions
 
@@ -36,11 +36,11 @@ session = {
 
 We can access this ID attribute via `session[:happiness]` or `session['happiness']`.
 
-In our first exercise, we will navigate to the `/first_exercise` path. Please follow instructions for each step, and be sure to run `rspec` before implementing each step. Make each test pass before proceeding to the next step.
+In our first exercise, we will navigate to the `/first_exercise` path. Please follow instructions for each step, and be sure to run `learn` before implementing each step. Make each test pass before proceeding to the next step.
 
 ### Second Exercise
 
-In our second exercise, we will navigate to the `/second_exercise` path. As in the previous lesson, be sure to run `rspec` before implementing each step. Make each test pass before proceeding to the next step.
+In our second exercise, we will navigate to the `/second_exercise` path. As in the previous lesson, be sure to run `learn` before implementing each step. Make each test pass before proceeding to the next step.
 
 ### Resources
 - [Primer on Cookie-Based Sessions](http://www.allaboutcookies.org/cookies/session-cookies-used-for.html)
