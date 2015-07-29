@@ -1,8 +1,4 @@
----
-tags: sinatra, sessions
-languages: ruby
-resources: 1
----
+
 
 # Sinatra Sessions
 
