@@ -51,7 +51,7 @@ These lines are enabling our application to use the `sessions` keyword to access
 
 * Navigate to the `/second_exercise` path. As in the previous lesson, be sure to run `learn` before implementing each step.
 
-* In this excersie, we'll be setting the `:id` key of the `session` hash equal to a value of `1`. Why are we doing this? The session is simply a way to store user data on a temporary basis. In any web application, a user ID is typically used as a session ID. This is because an ID attribute of a user is a unique identifier that will always be distinguishable from other user ID attributes. 
+* In this exercise, we'll be setting the `:id` key of the `session` hash equal to a value of `1`. Why are we doing this? The session is simply a way to store user data on a temporary basis. In any web application, a user ID is typically used as a session ID. This is because an ID attribute of a user is a unique identifier that will always be distinguishable from other user ID attributes. 
 
 Consequently, the act of "logging in" a user works like this: 
 
