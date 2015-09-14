@@ -42,13 +42,28 @@ These lines are enabling our application to use the `sessions` keyword to access
 
 *Remember to `bundle install` before proceeding!*
 
-### Part I:
+### Part I: storing data in and retriving data from the session hash
 
-Run `shotgun` to start up your app. Then, navigate to the `/first_exercise` path. Follow instructions for each step, and be sure to run `learn` before implementing each step. Make each test pass before proceeding to the next step.
+* Run `shotgun` to start up your app. 
+* Navigate to the `/first_exercise` path. Follow the instructions in the browser for each step, and be sure to run `learn` before implementing each step. Make each test pass before proceeding to the next step.
 
-### Second Exercise
+### Part II: logging in and logging out
 
-In our second exercise, we will navigate to the `/second_exercise` path. As in the previous lesson, be sure to run `learn` before implementing each step. Make each test pass before proceeding to the next step.
+* Navigate to the `/second_exercise` path. As in the previous lesson, be sure to run `learn` before implementing each step.
+
+* In this excersie, we'll be setting the `:id` key of the `session` hash equal to a value of `1`. Why are we doing this? The session is simply a way to store user data on a temporary basis. In any web application, a user ID is typically used as a session ID. This is because an ID attribute of a user is a unique identifier that will always be distinguishable from other user ID attributes. 
+
+Consequently, the act of "logging in" a user works like this: 
+
+1. User fills out a log in form with their email and password. User hits "sumibt" and posts that form to a route in the controller. 
+2. That controller route gets the email and password from the params. Then, we search the database for a user with that info. Something like `User.find_by(email: params[email], password: params[:password])`.
+3. The `session[:id]` is set that the ID of that user. 
+
+* Now, navigate to the '/fetch_session_id' route. Notice that we can access and render in the browser the `session[:id]` value. Remember that the session hash, and it's content, is available in *any controller route*. That means that whatever you store in there can be accessed at any time. Storing information about the user currently interacted with, or logged in to, your app will allow you to know who the current user is on any page of your app. 
+
+* Once you have the `GET '/fetch_session_id'` test passing, checkout the `get '/logout'` route in your controller, `app.rb`. Here we will accomplish the act of "logging out" our imaginary user. The act of "logging out" is simple the act of clearing the content of the session hash, including the `:id` key. The `.clear` method that you can all on any hash should accomplish this. 
+
+And that's it! 
 
 ### Resources
 - [Primer on Cookie-Based Sessions](http://www.allaboutcookies.org/cookies/session-cookies-used-for.html)

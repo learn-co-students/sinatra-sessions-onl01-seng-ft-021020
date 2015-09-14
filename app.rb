@@ -15,15 +15,13 @@ class App < Sinatra::Base
   end
 
   get '/first_exercise' do
-    "Your first exercise will be to set your session key-value pair. You should be able to set the session key-value pair somewhere in the app.rb file, which is currently acting as our controller. When you navigate to the '/set' path, it should set session[:foo] equal to 'hello'."
+    "Your first exercise will be to set your session key-value pair.\nIn the route: get '/set', write a line of code that sets the :foo key of the session hash equal to 'hello'.\nThen, naviate to the '/set' path."
   end
 
   get '/set' do
-    # Implement your solution here!
-    session[:foo] = 'hello'
+    # set the :foo key of the session hash equal to 'hello' here!
 
     if session[:foo] == 'hello'
-      "Session value set. It's currently set to #{session[:foo]}"
       redirect '/fetch'
     else
       "Session value has not been set!"
@@ -31,19 +29,18 @@ class App < Sinatra::Base
   end
 
   get '/fetch' do
-    "session[:foo] value: #{session[:foo]}."
+    "You did it! session[:foo] value: #{session[:foo]}.\nMove on to Part II of this lab."
   end
 
   get '/second_exercise' do
-    "Your second lesson will be to set your session id key-value pair. When you navigate to the '/set_session' path, it should set session[:id] equal to 1."
+    "Your second lesson will be to set your session :id key to a value.\nIn the route: /set_ession, write a line of code that sets the session[:id] equal to 1.\nThen, navigate to the '/set_session' path"
   end
 
   get '/set_session' do
     # Set session[:id] here!
-    session[:id] = 1
 
     if session[:id] == 1
-      "Session ID set. It's currently set to #{session[:id]}."
+      # "Session ID set. It's currently set to #{session[:id]}."
       redirect '/fetch_session_id'
     else
       "Session ID has not been set!"
@@ -51,15 +48,15 @@ class App < Sinatra::Base
   end
 
   get '/fetch_session_id' do
-    "session[:id] value: #{session[:id]}."
+    "You did it! session[:id] value: #{session[:id]}.\nNow, clear the session in the '/logout' route.\nSee the readme for further instructions.\nThen, navigate to the '/logout' path."
   end
 
   get '/logout' do
-    session.clear
-    "Session has now been cleared: #{session.inspect}. Continue on to the '/finish' line!"
+    # clear the session hash here.
+    "Session has now been cleared. session content: #{session.inspect}. Continue on to the '/finish' line!"
   end
 
   get '/finish' do
-    "Hopefully that explains a little more about the concept of sessions. The session cookie is simply a way to store user data on a temporary basis. In any web application, a user ID is typically used as a session ID. This is because an ID attribute of a user is a unique identifier that will always be distinguishable from other user ID attributes."
+    "Hopefully that explains a little more about the concept of sessions.\nThe session is simply a way to store user data on a temporary basis.\nIn any web application, a user ID is typically used as a session ID.\nThis is because an ID attribute of a user is a unique identifier\nthat will always be distinguishable from other user ID attributes."
   end
 end

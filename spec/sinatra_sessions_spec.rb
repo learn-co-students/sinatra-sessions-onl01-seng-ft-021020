@@ -51,4 +51,11 @@ describe 'App' do
       expect(last_response.body).to include("session[:id] value: 1.")
     end
   end
+
+  describe "GET '/logout'" do 
+    it "clear the session hash" do 
+      get '/logout'
+      expect(last_response.body).to include("session content: {}")
+    end
+  end
 end
