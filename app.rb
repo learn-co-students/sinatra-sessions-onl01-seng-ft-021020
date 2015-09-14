@@ -29,11 +29,11 @@ class App < Sinatra::Base
   end
 
   get '/fetch' do
-    "You did it! session[:foo] value: #{session[:foo]}.\nMove on to Part II of this lab."
+    "You did it! session[:foo] value: #{session[:foo]}.\nMove on to Part II of this lab at '/second_exercise' "
   end
 
   get '/second_exercise' do
-    "Your second lesson will be to set your session :id key to a value.\nIn the route: /set_ession, write a line of code that sets the session[:id] equal to 1.\nThen, navigate to the '/set_session' path"
+    "Your second lesson will be to set your session :id key to a value.\nIn the route: /set_session, write a line of code that sets the session[:id] equal to 1.\nThen, navigate to the '/set_session' path"
   end
 
   get '/set_session' do
