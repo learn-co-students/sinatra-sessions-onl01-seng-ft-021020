@@ -13,7 +13,7 @@ For example, when you log in to http://www.learn.co, you fill out a form with yo
 
 Then how, you might be wondering, does Learn (and every other web app) know who I am after I log in? Through the use of **sessions**. 
 
-A session is a hash that lives in your application in the server. The session hash can be accessed in any controller file of your application. Whatever data is stored in the session hash can thus be accessed, added to, changed or deleted in any controller file or route at any time *and that change persists* for the duration of the session. 
+A session is a hash that lives in your application in the server. It is the server-side counterpart of the cookie which lives in your browser. When you send a web request to a web application, the cookie gets sent with it. The session data is compared to the cookie data, telling the web application who is interacting with it. The session hash can be accessed in any controller file of your application. Whatever data is stored in the session hash can thus be accessed, added to, changed or deleted in any controller file or route at any time *and that change persists* for the duration of the session. 
 
 When we say "duration of the session", we mean the period of time in which you, the client, are interacting with the web application. This is usually the time in between logging in and logging out. 
 
