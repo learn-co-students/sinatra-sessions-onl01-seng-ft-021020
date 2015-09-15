@@ -1,42 +1,69 @@
+# Using Sessions
 
+## Objectives
 
-# Sinatra Sessions
+1. Gain a deeper understanding of sessions in a web application.
+2. Use sessions to persist information across multiple HTTP requests in a Sinatra app. 
 
-Today we're going to be learning all about sessions and how they work!
+## Sessions and Data Persistence 
 
-### Instructions
-- Clone this repository down to your local directory.
-- Type in `bundle install` in your terminal
-- Follow along in the `README`
-- As you go through each exercise, type in `learn` to ensure that your tests pass
+The Hyper-Text Transfer Protocol (HTTP) is, by definition, a stateless protocol. What does "stateless" mean? HTTP is called a "stateless protocol" because a server does not attach special meaning to a request, and consequently does not require the server to retain any information about a user or entity for the duration of a request.
 
-### Introduction to Sessions
+For example, when you log in to http://www.learn.co, you fill out a form with your Github username and password. Learn receives that information and, at that moment in time, knows who you are by matching up that log in information, submitted via a HTTP POST request, with data in it's database. What about after you log in? After you log in and click a link for a particular lesson, you are sending another HTTP request to Learn. At this point in the process of your interaction with the Learn web application, Learn has no idea who you are! But wait, you might be thinking. Did I just log in? How can Learn forget so easily? That is what it means to be "stateless". Each web request you send is, from the point of view of the application that is receiving that request, totally independent. 
 
-The Hyper-Text Transfer Protocol (HTTP) is, by definition, a stateless protocol. The reason why it's called a stateless protocol is because a server does not attach special meaning to a request, and consequently does not require the server to retain any information about a user or entity for the duration of a request.
+Then how, you might be wondering, does Learn (and every other web app) know who I am after I log in? Through the use of **sessions**. 
 
-So how does a web application maintain state for a user? It can do this via `cookie-based sessions`, where a cookie is stored on the client-side (in the browser) and used to warehouse data related to activity in the current user's session.
+A session is a hash that lives in your application in the server. It is the server-side counterpart of the cookie which lives in your browser. When you send a web request to a web application, the cookie gets sent with it. The session data is compared to the cookie data, telling the web application who is interacting with it. The session hash can be accessed in any controller file of your application. Whatever data is stored in the session hash can thus be accessed, added to, changed or deleted in any controller file or route at any time *and that change persists* for the duration of the session. 
 
-### Introduction to the Lab
+When we say "duration of the session", we mean the period of time in which you, the client, are interacting with the web application. This is usually the time in between logging in and logging out. 
 
-This is a simple lab that will go through the basic implementation of a session in Sinatra. Be sure to read the specs to see what's required of each step.
+In fact, the act of "logging in", is simply the the act of having your user id stored inside the session hash. The act of "logging out" is simply the act of your user id being removed from the session hash. 
 
-### First Exercise
+The session hash is most commonly used to store info like a user's id, which the web application will use to know who is the "current user" and show that user the appropriate information (for example, their profile page, their shopping cart, etc). However, we can put anything we want inside the session hash. 
 
-A session cookie is simply a text file that consists of key-value pairs. In a web application, a session cookie is represented by a hash that is called `session`. So, for example, if we have a key in our sessions hash that is called "happiness", and we set it equal to the number 3.14, it will look like this:
+## Overview
+
+In this lab, we'll be manipulating the session hash *accross HTTP requests**. That means that we will store, change, retrieve and delete session data in different controller routes. We'll see that changes we make to the session hash in one controller route will persist after subsequent web requests to other controller routes. 
+
+### Using Sessions in Sinatra
+
+Open up the controller file of this project, `app.rb`. Check out the following lines of code: 
 
 ```ruby
-session = {
-  'happiness' => 3.14
-}
+configure do
+    enable :sessions unless test?
+    set :session_secret, "secret"
+  end
 ```
 
-We can access this ID attribute via `session[:happiness]` or `session['happiness']`.
+These lines are enabling our application to use the `sessions` keyword to access the session hash. We are also setting a session secret. Don't worry too much about the session secret for now, just know that it keeps our session data safe from outsiders. 
 
-In our first exercise, we will navigate to the `/first_exercise` path. Please follow instructions for each step, and be sure to run `learn` before implementing each step. Make each test pass before proceeding to the next step.
+### Instructions
 
-### Second Exercise
+*Remember to `bundle install` before proceeding!*
 
-In our second exercise, we will navigate to the `/second_exercise` path. As in the previous lesson, be sure to run `learn` before implementing each step. Make each test pass before proceeding to the next step.
+### Part I: storing data in and retrieving data from the session hash
+
+* Run `shotgun` to start up your app. 
+* Navigate to the `/first_exercise` path. Follow the instructions in the browser for each step, and be sure to run `learn` before implementing each step. Make each test pass before proceeding to the next step.
+
+### Part II: logging in and logging out
+
+* Navigate to the `/second_exercise` path. As in the previous lesson, be sure to run `learn` before implementing each step.
+
+* In this exercise, we'll be setting the `:id` key of the `session` hash equal to a value of `1`. Why are we doing this? The session is simply a way to store user data on a temporary basis. In any web application, a user ID is typically used as a session ID. This is because an ID attribute of a user is a unique identifier that will always be distinguishable from other user ID attributes. 
+
+Consequently, the act of "logging in" a user works like this: 
+
+1. User fills out a log in form with their email and password. User hits "submit" and posts that form to a route in the controller. 
+2. That controller route gets the email and password from the params. Then, we search the database for a user with that info. Something like `User.find_by(email: params[email], password: params[:password])`.
+3. The `session[:id]` is set that the ID of that user. 
+
+* Now, navigate to the '/fetch_session_id' route. Notice that we can access and render in the browser the `session[:id]` value. Remember that the session hash, and it's content, is available in *any controller route*. That means that whatever you store in there can be accessed at any time. Storing information about the user currently interacted with, or logged in to, your app will allow you to know who the current user is on any page of your app. 
+
+* Once you have the `GET '/fetch_session_id'` test passing, checkout the `get '/logout'` route in your controller, `app.rb`. Here we will accomplish the act of "logging out" our imaginary user. The act of "logging out" is simple the act of clearing the content of the session hash, including the `:id` key. The `.clear` method that you can all on any hash should accomplish this. 
+
+And that's it! 
 
 ### Resources
 - [Primer on Cookie-Based Sessions](http://www.allaboutcookies.org/cookies/session-cookies-used-for.html)
