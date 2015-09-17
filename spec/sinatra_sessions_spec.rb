@@ -16,9 +16,9 @@ describe 'App' do
   end
 
   describe "GET '/set'" do
-    it "sets session[:foo] equal to hello" do
+    it "sets session[:username] equal to hello" do
       get '/set'
-      expect(session[:foo]).to eq('hello')
+      expect(session[:username]).to eq('Harry Potter')
     end
   end
 
@@ -26,7 +26,7 @@ describe 'App' do
     it "returns a string specifying the correct session value" do
       get '/set'
       get '/fetch'
-      expect(last_response.body).to include('session[:foo] value: hello.')
+      expect(last_response.body).to include('Welcome, Harry Potter')
     end
   end
 
