@@ -9,7 +9,7 @@
 
 The Hyper-Text Transfer Protocol (HTTP) is, by definition, a stateless protocol. What does "stateless" mean? HTTP is called a "stateless protocol" because a server does not attach special meaning to a request, and consequently does not require the server to retain any information about a user or entity for the duration of a request.
 
-For example, when you log in to http://www.learn.co, you fill out a form with your Github username and password. Learn recieves that information and, at that moment in time, knows who you are by matching up that log in information, submitted via a HTTP POST request, with data in it's database. What about after you log in? After you log in and click a link for a particular lesson, you are sending another HTTP request to Learn. At this point in the process of your interaction with the Learn web application, Learn has no idea who you are! But wait, you might be thinking. Did I just log in? How can Learn forget so easily? That is what it means to be "stateless". Each web request you send is, from the point of view of the application that is recieving that request, totally independent. 
+For example, when you log in to http://www.learn.co, you fill out a form with your Github username and password. Learn receives that information and, at that moment in time, knows who you are by matching up that log in information, submitted via a HTTP POST request, with data in it's database. What about after you log in? After you log in and click a link for a particular lesson, you are sending another HTTP request to Learn. At this point in the process of your interaction with the Learn web application, Learn has no idea who you are! But wait, you might be thinking. Did I just log in? How can Learn forget so easily? That is what it means to be "stateless". Each web request you send is, from the point of view of the application that is receiving that request, totally independent. 
 
 Then how, you might be wondering, does Learn (and every other web app) know who I am after I log in? Through the use of **sessions**. 
 
@@ -23,7 +23,7 @@ The session hash is most commonly used to store info like a user's id, which the
 
 ## Overview
 
-In this lab, we'll be manipulating the session hash *accross HTTP requests**. That means that we will store, change, retreive and delete session data in different controller routes. We'll see that changes we make to the session hash in one controller route will persist after subsequent web requests to other controller routes. 
+In this lab, we'll be manipulating the session hash *accross HTTP requests**. That means that we will store, change, retrieve and delete session data in different controller routes. We'll see that changes we make to the session hash in one controller route will persist after subsequent web requests to other controller routes. 
 
 ### Using Sessions in Sinatra
 
@@ -42,7 +42,7 @@ These lines are enabling our application to use the `sessions` keyword to access
 
 *Remember to `bundle install` before proceeding!*
 
-### Part I: storing data in and retriving data from the session hash
+### Part I: storing data in and retrieving data from the session hash
 
 * Run `shotgun` to start up your app. 
 * Navigate to the `/first_exercise` path. Follow the instructions in the browser for each step, and be sure to run `learn` before implementing each step. Make each test pass before proceeding to the next step.
@@ -51,11 +51,11 @@ These lines are enabling our application to use the `sessions` keyword to access
 
 * Navigate to the `/second_exercise` path. As in the previous lesson, be sure to run `learn` before implementing each step.
 
-* In this excersie, we'll be setting the `:id` key of the `session` hash equal to a value of `1`. Why are we doing this? The session is simply a way to store user data on a temporary basis. In any web application, a user ID is typically used as a session ID. This is because an ID attribute of a user is a unique identifier that will always be distinguishable from other user ID attributes. 
+* In this exercise, we'll be setting the `:id` key of the `session` hash equal to a value of `1`. Why are we doing this? The session is simply a way to store user data on a temporary basis. In any web application, a user ID is typically used as a session ID. This is because an ID attribute of a user is a unique identifier that will always be distinguishable from other user ID attributes. 
 
 Consequently, the act of "logging in" a user works like this: 
 
-1. User fills out a log in form with their email and password. User hits "sumibt" and posts that form to a route in the controller. 
+1. User fills out a log in form with their email and password. User hits "submit" and posts that form to a route in the controller. 
 2. That controller route gets the email and password from the params. Then, we search the database for a user with that info. Something like `User.find_by(email: params[email], password: params[:password])`.
 3. The `session[:id]` is set that the ID of that user. 
 
