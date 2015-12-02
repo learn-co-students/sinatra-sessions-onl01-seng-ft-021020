@@ -16,7 +16,7 @@ describe 'App' do
   end
 
   describe "GET '/set'" do
-    it "sets session[:username] equal to hello" do
+    it "sets session[:username] equal to Harry Potter" do
       get '/set'
       expect(session[:username]).to eq('Harry Potter')
     end
