@@ -7,9 +7,9 @@
 
 ## Sessions and Data Persistence 
 
-The Hyper-Text Transfer Protocol (HTTP) is, by definition, a stateless protocol. What does "stateless" mean? HTTP is called a "stateless protocol" because a server does not attach special meaning to a request, and consequently does not require the server to retain any information about a user or entity for the duration of a request.
+The Hyper-Text Transfer Protocol (HTTP) is, by definition, a stateless protocol. What does "stateless" mean? HTTP is called a "stateless protocol" because a browser does not attach special meaning to a request, and consequently does not require the server to retain any information about a user or entity for the duration of a request.
 
-For example, when you log in to http://www.learn.co, you fill out a form with your Github username and password. Learn receives that information and, at that moment in time, knows who you are by matching up that log in information, submitted via a HTTP POST request, with data in it's database. What about after you log in? After you log in and click a link for a particular lesson, you are sending another HTTP request to Learn. At this point in the process of your interaction with the Learn web application, Learn has no idea who you are! But wait, you might be thinking. Did I just log in? How can Learn forget so easily? That is what it means to be "stateless". Each web request you send is, from the point of view of the application that is receiving that request, totally independent. 
+For example, when you log in to http://www.learn.co, you fill out a form with your Github username and password. Learn receives that information and, at that moment in time, knows who you are by matching up that log in information, submitted via a HTTP POST request, with data in it's database. What about after you log in? After you log in and click a link for a particular lesson, you are sending another HTTP request to Learn. At this point in the process of your interaction with the Learn web application, Learn has no idea who you are! But wait, you might be thinking: *"Didn't I just log in? How can Learn forget so easily?"* That is what it means to be "stateless". Each web request you send is, from the point of view of the application that is receiving that request, totally independent. 
 
 Then how, you might be wondering, does Learn (and every other web app) know who I am after I log in? Through the use of **sessions**. 
 
@@ -23,7 +23,7 @@ The session hash is most commonly used to store info like a user's id, which the
 
 ## Overview
 
-In this lab, we'll be manipulating the session hash *accross HTTP requests**. That means that we will store, change, retrieve and delete session data in different controller routes. We'll see that changes we make to the session hash in one controller route will persist after subsequent web requests to other controller routes. 
+In this lab, we'll be manipulating the session hash *across HTTP requests*. That means that we will store, change, retrieve and delete session data in different controller routes. We'll see that changes we make to the session hash in one controller route will persist after subsequent web requests to other controller routes. 
 
 ### Using Sessions in Sinatra
 
@@ -56,14 +56,17 @@ These lines are enabling our application to use the `sessions` keyword to access
 Consequently, the act of "logging in" a user works like this: 
 
 1. User fills out a log in form with their email and password. User hits "submit" and posts that form to a route in the controller. 
+<<<<<<< HEAD
 2. That controller route gets the email and password from the params. Then, we search the database for a user with that info. Something like `User.find_by(email: params[email], password: params[:password])`.
 3. The `session[:id]` is set that the ID of that user. 
 
-* Now, navigate to the '/fetch_session_id' route. Notice that we can access and render in the browser the `session[:id]` value. Remember that the session hash, and it's content, is available in *any controller route*. That means that whatever you store in there can be accessed at any time. Storing information about the user currently interacted with, or logged in to, your app will allow you to know who the current user is on any page of your app. 
+* Now, navigate to the '/fetch_session_id' route. Notice that we can access and render in the browser the `session[:id]` value. Remember that the session hash, and it's content, is available in *any controller route*. That means that whatever you store in there can be accessed at any time. Storing information about the user currently interacted with, or logged into, your app will allow you to know who the current user is on any page of your app. 
 
-* Once you have the `GET '/fetch_session_id'` test passing, checkout the `get '/logout'` route in your controller, `app.rb`. Here we will accomplish the act of "logging out" our imaginary user. The act of "logging out" is simple the act of clearing the content of the session hash, including the `:id` key. The `.clear` method that you can all on any hash should accomplish this. 
+* Once you have the `GET '/fetch_session_id'` test passing, checkout the `get '/logout'` route in your controller, `app.rb`. Here we will accomplish the act of "logging out" our imaginary user. The act of "logging out" is simple the act of clearing the content of the session hash, including the `:id` key. The `.clear` method that you can call on any hash should accomplish this. 
 
 And that's it! 
 
 ### Resources
 - [Primer on Cookie-Based Sessions](http://www.allaboutcookies.org/cookies/session-cookies-used-for.html)
+
+<a href='https://learn.co/lessons/sinatra-sessions' data-visibility='hidden'>View this lesson on Learn.co</a>
