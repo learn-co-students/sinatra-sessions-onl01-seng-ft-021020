@@ -23,7 +23,7 @@ The session hash is most commonly used to store info like a user's id, which the
 
 ## Overview
 
-In this lab, we'll be manipulating the session hash *accross HTTP requests**. That means that we will store, change, retrieve and delete session data in different controller routes. We'll see that changes we make to the session hash in one controller route will persist after subsequent web requests to other controller routes. 
+In this lab, we'll be manipulating the session hash *accross HTTP requests*. That means that we will store, change, retrieve and delete session data in different controller routes. We'll see that changes we make to the session hash in one controller route will persist after subsequent web requests to other controller routes. 
 
 ### Using Sessions in Sinatra
 
