@@ -3,7 +3,7 @@
 ## Objectives
 
 1. Gain a deeper understanding of sessions in a web application.
-2. Use sesions to persist information across multiple HTTP requests in a Sinatra app. 
+2. Use sessions to persist information across multiple HTTP requests in a Sinatra app. 
 
 ## Sessions and Data Persistance 
 
@@ -68,4 +68,6 @@ And that's it!
 ### Resources
 - [Primer on Cookie-Based Sessions](http://www.allaboutcookies.org/cookies/session-cookies-used-for.html)
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-sessions' title='Using Sessions'>Using Sessions</a> on Learn.co and start learning to code for free.</p>
+<a href='https://learn.co/lessons/sinatra-sessions' data-visibility='hidden'>View this lesson on Learn.co</a>
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-sessions'>Sinatra Sessions Codealong</a> on Learn.co and start learning to code for free.</p>
