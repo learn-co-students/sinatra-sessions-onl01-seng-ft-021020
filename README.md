@@ -70,3 +70,5 @@ And that's it!
 - [Primer on Cookie-Based Sessions](http://www.allaboutcookies.org/cookies/session-cookies-used-for.html)
 
 <a href='https://learn.co/lessons/sinatra-sessions' data-visibility='hidden'>View this lesson on Learn.co</a>
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-sessions'>Sinatra Sessions Codealong</a> on Learn.co and start learning to code for free.</p>
