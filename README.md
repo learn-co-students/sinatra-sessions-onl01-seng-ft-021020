@@ -59,7 +59,7 @@ Consequently, the act of "logging in" a user works like this:
 2. That controller route gets the email and password from the params. Then, we search the database for a user with that info. Something like `User.find_by(email: params[:email], password: params[:password])`.
 3. The `session[:id]` is set to the ID of that user. 
 
-* Now, navigate to the '/fetch_session_id' route. Notice that we can access and render in the browser the `session[:id]` value. Remember that the session hash, and it's content, is available in *any controller route*. That means that whatever you store in there can be accessed at any time. Storing information about the user currently interacted with, or logged into, your app will allow you to know who the current user is on any page of your app. 
+* Now, navigate to the '/fetch_session_id' route. Notice that we can access and render in the browser the `session[:id]` value. Remember that the session hash, and its content, is available in *any controller route*. That means that whatever you store in there can be accessed at any time. Storing information about the user currently interacting with, or logged into, your app will allow you to know who the current user is on any page of your app. 
 
 * Once you have the `GET '/fetch_session_id'` test passing, checkout the `get '/logout'` route in your controller, `app.rb`. Here we will accomplish the act of "logging out" our imaginary user. The act of "logging out" is simple the act of clearing the content of the session hash, including the `:id` key. The `.clear` method that you can call on any hash should accomplish this. 
 
