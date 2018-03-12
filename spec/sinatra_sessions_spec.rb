@@ -38,9 +38,9 @@ describe 'App' do
   end
 
   describe "GET '/set_session'" do
-    it "sets session[:id] equal to 1" do
+    it "sets session[:user_id] equal to 1" do
       get '/set_session'
-      expect(session[:id]).to eq(1)
+      expect(session[:user_id]).to eq(1)
     end
   end
 
@@ -48,12 +48,12 @@ describe 'App' do
     it "returns a string specifying the correct session value" do
       get '/set_session'
       get '/fetch_session_id'
-      expect(last_response.body).to include("session[:id] value: 1.")
+      expect(last_response.body).to include("session[:user_id] value: 1.")
     end
   end
 
-  describe "GET '/logout'" do 
-    it "clear the session hash" do 
+  describe "GET '/logout'" do
+    it "clear the session hash" do
       get '/logout'
       expect(last_response.body).to include("session content: {}")
     end
