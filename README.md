@@ -59,7 +59,7 @@ Consequently, the act of "logging in" a user works like this:
 2. That controller route gets the email and password from the params. Then, we search the database for a user with that info. Something like `User.find_by(email: params[:email], password: params[:password])`.
 3. The `session[:user_id]` is set to the ID of that user.
 
-* Now, navigate to the '/fetch_session_id' route. Notice that we can access and render in the browser the `session[:user_id]` value. Remember that the session hash, and its content, is available in _any controller route_. That means that whatever you store in there can be accessed at any time. Storing information about the user currently interacting with, or logged into, your app will allow you to know who the current user is on any page of your app.
+* Now, navigate to the '/fetch*session_id' route. Notice that we can access and render in the browser the `session[:user_id]` value. Remember that the session hash, and its content, is available in \_any controller route*. That means that whatever you store in there can be accessed at any time. Storing information about the user currently interacting with, or logged into, your app will allow you to know who the current user is on any page of your app.
 
 * Once you have the `GET '/fetch_session_id'` test passing, checkout the `get '/logout'` route in your controller, `app.rb`. Here we will accomplish the act of "logging out" our imaginary user. The act of "logging out" is simply the act of clearing the content of the session hash, including the `:user_id` key. The `.clear` method that you can call on any hash should accomplish this.
 
@@ -68,9 +68,5 @@ And that's it!
 ### Resources
 
 * [Primer on Cookie-Based Sessions](http://www.allaboutcookies.org/cookies/session-cookies-used-for.html)
-
-<a href='https://learn.co/lessons/sinatra-sessions' data-visibility='hidden'>View this lesson on Learn.co</a>
-
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-sessions'>Sinatra Sessions Codealong</a> on Learn.co and start learning to code for free.</p>
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/sinatra-sessions'>Sinatra Sessions Codealong</a> on Learn.co and start learning to code for free.</p>
