@@ -42,6 +42,11 @@ describe 'App' do
       get '/set_session'
       expect(session[:id]).to eq(1)
     end
+
+    it "redirects user to /fetch_session_id" do
+      get '/set_session'
+      expect(last_response).to be_redirect
+    end
   end
 
   describe "GET '/fetch_session_id'" do
